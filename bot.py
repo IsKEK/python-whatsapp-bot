@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 import pyautogui as pag
 
 pag.FAILSAFE = True
@@ -7,14 +6,22 @@ pag.FAILSAFE = True
 lastPoint = NULL
 
 while(True):
-    pag.click()
-    pag.moveRel(0, 107, 1)
+    isConfirmed = pag.confirm("Do you want to send the message?")
+    if isConfirmed != "Cancel":
+        pag.click()
+        pag.hotkey('ctrl', 'v')
+        pag.press('enter')
+    pag.moveRel(0, 107, 0)
     if pag.position().y >= 1300:
         break
 
 while(True):
-    pag.PAUSE = 1
-    pag.scroll(-87)
-    pag.click()
+    # pag.PAUSE = 1
+    pag.scroll(-86)
+    isConfirmed = pag.confirm("Do you want to send the message?")
+    if isConfirmed != "Cancel":
+        pag.click()
+        pag.hotkey('ctrl', 'v')
+        pag.press('enter')
 # print(pag.position())
 # print(pag.size())
