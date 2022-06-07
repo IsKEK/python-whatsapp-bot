@@ -1,9 +1,11 @@
 import pyautogui as pag
 
 pag.FAILSAFE = True
+pag.PAUSE = 0.5
 
 def sendMessage():
     isConfirmed = pag.confirm("Do you want to send the message?")
+    print(isConfirmed)
     if isConfirmed != "Cancel":
         pag.click()
         pag.hotkey('ctrl', 'v')
@@ -11,12 +13,11 @@ def sendMessage():
 
 while(True):
     sendMessage()
-    pag.moveRel(0, 107, 0.5)
+    pag.moveRel(0, 107, 0.1)
     if pag.position().y >= 1300:
         sendMessage()
         break
 
 while(True):
-    pag.PAUSE = 0.5
     pag.scroll(-86)
-        sendMessage()
+    sendMessage()
