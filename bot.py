@@ -25,15 +25,15 @@ def sendMessage():
     print(isConfirmed)
     if isConfirmed != "Cancel":
         pag.click()
-        # win32clipboard.OpenClipboard()
-        # win32clipboard.EmptyClipboard()
-        # win32clipboard.SetClipboardData(win32clipboard.CF_DIB, imageToSend)
-        # win32clipboard.CloseClipboard()
-        # pag.hotkey('ctrl', 'v')
-        # win32clipboard.OpenClipboard()
-        # win32clipboard.EmptyClipboard()
-        # win32clipboard.SetClipboardData(win32clipboard.CF_UNICODETEXT, textToSend)
-        # win32clipboard.CloseClipboard()
+        win32clipboard.OpenClipboard()
+        win32clipboard.EmptyClipboard()
+        win32clipboard.SetClipboardData(win32clipboard.CF_DIB, imageToSend)
+        win32clipboard.CloseClipboard()
+        pag.hotkey('ctrl', 'v')
+        win32clipboard.OpenClipboard()
+        win32clipboard.EmptyClipboard()
+        win32clipboard.SetClipboardData(win32clipboard.CF_UNICODETEXT, textToSend)
+        win32clipboard.CloseClipboard()
         pag.hotkey('ctrl', 'v')
         pag.press('enter')
         return True
@@ -41,8 +41,8 @@ def sendMessage():
 
 while(True):
     sendMessage()
-    pag.moveRel(0, 107, 0.1)
-    if pag.position().y >= 1300:
+    pag.moveRel(0, 90, 0.1)
+    if pag.position().y >= 900:
         sendMessage()
         break
 
